@@ -79,7 +79,7 @@ library(NeuralNetTools)
 library(FNN)
 
 
-####QUESTION 3 
+####   QUESTION 3 
 
 #### 
 
@@ -91,18 +91,6 @@ str(df1)
 
 p <- ggplot(df1, aes(x=`Area of Interest`, y=Hour)) + 
   geom_boxplot() + geom_point(aes(colour=Person))+ ylim(0,12)
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -147,7 +135,7 @@ df<-  df %>%mutate(daily_vaccinations = case_when(
 
 
 
-####### Question 5
+############ Question 5
 
 
 df<-df %>% arrange(country, date)
@@ -165,7 +153,9 @@ dfmax <- as.data.frame(df %>%
 dfmax %>% slice_max(median, n = 3)
 
 
-####### Question 6
+####### ###################    Question 6
+
+
 ##YEAR-MM-DD 
 df  %>% filter(date== "2021-01-06")   %>% summarise(total=sum(daily_vaccinations ))
 
@@ -173,7 +163,7 @@ df  %>% filter(date== "2021-01-06")   %>% summarise(total=sum(daily_vaccinations
 
 
 
-#######################################    Question 6 #############################################
+#######################################    Question 7 #############################################
 
 
 ##library(sqldf)
@@ -200,7 +190,7 @@ tblsql_join<-  sqldf(
 test_sqltable <- sqldf("Select *, ifnull(daily_vaccinations ,median) as assignmedian From tblsql_join")
 
 
-### ####################################  Question 6 Answer = finalsqltable
+### ####################################  Question 8 nswer = finalsqltable
 
 finalsqltable <-  sqldf("Select *, ifnull(assignmedian ,0) as updatedvaccitaions From test_sqltable")
 
